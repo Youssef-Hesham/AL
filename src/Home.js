@@ -2,7 +2,7 @@ import Carousel from "./carousel";
 import carouselItems from "./CarouselItems";
 function Home() {
   return (
-    <div>
+    <div className="main">
       <Carousel items={carouselItems} />
       <section>
         <h2>Overview </h2>
