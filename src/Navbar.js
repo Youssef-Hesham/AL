@@ -20,7 +20,7 @@ function Navbr() {
               alt="logo"
               src="images/logos/logo-notext.png"
             />
-            <h1 className="logo-name">Al-Shrief</h1>
+            <h1 className="logo-name">Al-Sharief</h1>
           </Link>
         </li>
         <div className="nav-links">
