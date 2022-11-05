@@ -113,8 +113,7 @@ body {
   text-decoration: none;
 }
 .nav-logo {
-  max-width: 100%;
-  height: 60px;
+  max-width: 20%;
 }
 .nav-notActive {
   color: #e7f6f2;
@@ -201,7 +200,7 @@ footer {
   justify-content: space-around;
 }
 .partner-logos img {
-  max-width: 150px;
+  max-width: 25%;
   padding: 10px;
   padding-bottom: 20px;
 }

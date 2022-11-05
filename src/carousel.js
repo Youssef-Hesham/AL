@@ -21,10 +21,10 @@ function Carousel({ items }) {
 
   return (
     <div>
+      <button onClick={prevItem}>{"<"}</button>
       <div>
         <img className="carouselImg" src={items[itemIndex].src} alt="product" />
       </div>
-      <button onClick={prevItem}>{"<"}</button>
       <h1>{items[itemIndex].text}</h1>
       <button onClick={nextItem}>{">"}</button>
     </div>
