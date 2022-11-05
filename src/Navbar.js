@@ -17,7 +17,7 @@ function Navbr() {
       <ul className="navbar">
         <li className="logo-container">
           <Link to="/home" className="logo-container">
-            <img className="nav-logo" alt="logo" src={carouselItems[0].src} />
+            <img className="nav-logo" alt="logo" src={carouselItems[2].src} />
             <h1 className="logo-name">Al-Sharief</h1>
           </Link>
         </li>

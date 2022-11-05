@@ -11,7 +11,7 @@ import {
   faWhatsapp,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
-import { partners } from "./Images";
+import carouselItems from "./Images";
 function Footer() {
   return (
     <footer>
@@ -52,9 +52,9 @@ function Footer() {
       <div className="partners">
         <h2>Partners</h2>
         <div className="partner-logos">
-          <img src={partners[0].src} alt="logo" />
-          <img src={partners[1].src} alt="logo" />
-          <img src={partners[2].src} alt="logo" />
+          <img src={carouselItems[4].src} alt="logo" />
+          <img src={carouselItems[5].src} alt="logo" />
+          <img src={carouselItems[6].src} alt="logo" />
         </div>
       </div>
     </footer>

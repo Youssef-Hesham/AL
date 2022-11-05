@@ -9,6 +9,26 @@ const carouselItems = [
     src: "Images/Carousel-Images/grayscale.jpg",
     text: "shds sdsdnskkkkkkkkk skaslask",
   },
+  {
+    index: 2,
+    src: "Images/Carousel-Images/logo-notext.png",
+  },
+  {
+    index: 3,
+    src: "Images/Carousel-Images/logo.png",
+  },
+  {
+    index: 4,
+    src: "Images/Carousel-Images/adinstruments-logo.png",
+  },
+  {
+    index: 5,
+    src: "Images/Carousel-Images/diagnosyslogo.png",
+  },
+  {
+    index: 6,
+    src: "Images/Carousel-Images/optika.png",
+  },
 ];
 
 export const companyLogos = [
