@@ -1,5 +1,5 @@
 import Carousel from "./carousel";
-import carouselItems from "./CarouselItems";
+import carouselItems from "./Images";
 function Home() {
   return (
     <div className="main">

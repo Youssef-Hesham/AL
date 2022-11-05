@@ -7,6 +7,8 @@ import {
   faAddressCard,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { companyLogos } from "./Images";
+
 function Navbr() {
   let activeClassName = "nav-active";
   let notrActiveClassName = "nav-notActive";
@@ -15,11 +17,7 @@ function Navbr() {
       <ul className="navbar">
         <li className="logo-container">
           <Link to="/home" className="logo-container">
-            <img
-              className="nav-logo"
-              alt="logo"
-              src="images/logos/logo-notext.png"
-            />
+            <img className="nav-logo" alt="logo" src={companyLogos[0].src} />
             <h1 className="logo-name">Al-Sharief</h1>
           </Link>
         </li>
