@@ -27,7 +27,7 @@ function Navbr() {
               className={({ isActive }) =>
                 isActive ? activeClassName : notrActiveClassName
               }
-              to="/home"
+              to="/"
             >
               <FontAwesomeIcon icon={faHouse} /> Home
             </NavLink>{" "}
