@@ -1,9 +1,9 @@
 import Carousel from "./carousel";
-import carouselItems from "./Images";
+import { carouselImages } from "./Images";
 function Home() {
   return (
     <div className="main">
-      <Carousel items={carouselItems} />
+      <Carousel items={carouselImages} />
       <section>
         <h2>Overview </h2>
         <p>

@@ -7,7 +7,7 @@ import {
   faAddressCard,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import carouselItems from "./Images";
+import images from "./Images";
 
 function Navbr() {
   let activeClassName = "nav-active";
@@ -16,8 +16,8 @@ function Navbr() {
     <nav>
       <ul className="navbar">
         <li className="logo-container">
-          <Link to="/home" className="logo-container">
-            <img className="nav-logo" alt="logo" src={carouselItems[2].src} />
+          <Link to="/" className="logo-container">
+            <img className="nav-logo" alt="logo" src={images[2].src} />
             <h1 className="logo-name">Al-Sharief</h1>
           </Link>
         </li>
@@ -53,13 +53,13 @@ function Navbr() {
               <FontAwesomeIcon icon={faAngleDown} />
             </NavLink>{" "}
             <div className="submenu">
-              <Link to="/home" className="submenu-item">
+              <Link to="/" className="submenu-item">
                 ddfdf
               </Link>
-              <Link to="/home" className="submenu-item">
+              <Link to="/" className="submenu-item">
                 ddfdf
               </Link>
-              <Link to="/home" className="submenu-item">
+              <Link to="/" className="submenu-item">
                 ddfdf
               </Link>
             </div>

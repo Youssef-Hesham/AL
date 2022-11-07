@@ -1,13 +1,11 @@
-const carouselItems = [
+const images = [
   {
     index: 0,
     src: "Images/Carousel-Images/866.jpg",
-    text: "shds sdsdnsk skaslask",
   },
   {
     index: 1,
     src: "Images/Carousel-Images/grayscale.jpg",
-    text: "shds sdsdnskkkkkkkkk skaslask",
   },
   {
     index: 2,
@@ -31,30 +29,25 @@ const carouselItems = [
   },
 ];
 
-export const companyLogos = [
+export const carouselImages = [
   {
     index: 0,
-    src: "images/logos/logo-notext.png",
+    src: "Images/Carousel-Images/adinstruments-logo.png",
+    text: "shds sdsdnskkkkkkkkk skaslask",
+    description: "dsdsadsacsocsovmflkfbdfbpfd fpfc pfldfldv dkd,fvflbm  ",
   },
   {
     index: 1,
-    src: "Images/logos/logo.png",
-  },
-];
-
-export const partners = [
-  {
-    index: 0,
-    src: "Images/Partners/adinstruments-logo.png",
-  },
-  {
-    index: 1,
-    src: "images/partners/diagnosyslogo.png",
+    src: "Images/Carousel-Images/diagnosyslogo.png",
+    text: "shds sdsdnskkkkkkkkk skaslask",
+    description: "dsdsadsacsocsovmflkfbdfbpfd fpfc pfldfldv dkd,fvflbm  ",
   },
   {
     index: 2,
-    src: "images/partners/optika.png",
+    src: "Images/Carousel-Images/optika.png",
+    text: "shds sdsdnskkkkkkkkk skaslask",
+    description: "dsdsadsacsocsovmflkfbdfbpfd fpfc pfldfldv dkd,fvflbm  ",
   },
 ];
 
-export default carouselItems;
+export default images;

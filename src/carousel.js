@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Carousel({ items }) {
   const [itemIndex, updateItemIndex] = useState(0);
 
+  useEffect(() => {
+    console.log("hi");
+  }, [itemIndex]);
   function nextItem() {
     if (itemIndex === items.length - 1) {
       updateItemIndex(0);
@@ -20,13 +23,18 @@ function Carousel({ items }) {
   }
 
   return (
-    <div>
-      <button onClick={prevItem}>{"<"}</button>
+    <div className="carouselCard">
+      <button className="carouselButton" onClick={prevItem}>
+        {"<"}
+      </button>
       <div>
         <img className="carouselImg" src={items[itemIndex].src} alt="product" />
       </div>
       <h1>{items[itemIndex].text}</h1>
-      <button onClick={nextItem}>{">"}</button>
+      <p>{items[itemIndex].description}</p>
+      <button className="carouselButton" onClick={nextItem}>
+        {">"}
+      </button>
     </div>
   );
 }
