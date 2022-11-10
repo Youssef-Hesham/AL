@@ -296,3 +296,28 @@ footer {
     display: flex;
   }
 }
+
+@media only screen and (max-width: 350px) {
+  body {
+    width: 100%;
+  }
+  .navbar {
+    width: 100%;
+    justify-content: flex-start;
+    margin: 00;
+    padding: 0%;
+  }
+  .nav-links {
+    display: none;
+    visibility: hidden;
+  }
+  .main-footer {
+    flex-direction: column;
+  }
+  .phone-bars {
+    display: flex;
+  }
+  .logo-name {
+    display: none;
+  }
+}
