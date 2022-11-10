@@ -5,6 +5,7 @@ import {
   faCircleQuestion,
   faBoxOpen,
   faAddressCard,
+  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import images from "./Images";
@@ -12,6 +13,16 @@ import images from "./Images";
 function Navbr() {
   let activeClassName = "nav-active";
   let notrActiveClassName = "nav-notActive";
+
+  function toggleVisibility() {
+    var x = document.getElementById("PM");
+    if (x.style.visibility === "hidden") {
+      x.style.visibility = "visible";
+    } else {
+      x.style.visibility = "hidden";
+    }
+  }
+
   return (
     <nav>
       <ul className="navbar">
@@ -21,12 +32,36 @@ function Navbr() {
             <h1 className="logo-name">Al-Sharief</h1>
           </Link>
         </li>
+        <li
+          className="nav-btn phone-bars"
+          onClick={() => {
+            toggleVisibility();
+          }}
+        >
+          <FontAwesomeIcon icon={faBars} />
+          <div id="PM" className="phone-menu">
+            <Link to="/" className="submenu-item">
+              Home
+            </Link>
+            <Link to="/about" className="submenu-item">
+              About
+            </Link>
+            <Link to="/products" className="submenu-item">
+              Products
+            </Link>
+            <Link to="/contact" className="submenu-item">
+              Contact Us
+            </Link>
+          </div>
+        </li>
+
         <div className="nav-links">
           <li className="nav-btn">
             <NavLink
               className={({ isActive }) =>
                 isActive ? activeClassName : notrActiveClassName
               }
+              end
               to="/"
             >
               <FontAwesomeIcon icon={faHouse} /> Home
