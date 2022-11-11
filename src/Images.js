@@ -32,21 +32,17 @@ const images = [
 export const carouselImages = [
   {
     index: 0,
-    src: "Images/Carousel-Images/adinstruments-logo.png",
-    text: "shds sdsdnskkkkkkkkk skaslask",
-    description: "dsdsadsacsocsovmflkfbdfbpfd fpfc pfldfldv dkd,fvflbm  ",
+    src: "Images/Carousel-Images/langendroff.png",
+    text: "Langendorff System – Panlab (Constant Pressure or Flow)",
+    description:
+      "The Langendorff System - Panlab (Constant Pressure or Flow) is designed to perfuse isolated small animal hearts such as mouse, rat and guinea pig, while providing measurement of pressure, biopotentials and temperature.  ",
   },
   {
     index: 1,
-    src: "Images/Carousel-Images/diagnosyslogo.png",
-    text: "shds sdsdnskkkkkkkkk skaslask",
-    description: "dsdsadsacsocsovmflkfbdfbpfd fpfc pfldfldv dkd,fvflbm  ",
-  },
-  {
-    index: 2,
-    src: "Images/Carousel-Images/optika.png",
-    text: "shds sdsdnskkkkkkkkk skaslask",
-    description: "dsdsadsacsocsovmflkfbdfbpfd fpfc pfldfldv dkd,fvflbm  ",
+    src: "Images/Carousel-Images/metabolic-system.png",
+    text: "Metabolic (Exercise Physiology) System",
+    description:
+      "A complete physiology recording system for monitoring cardiorespiratory and metabolic functions during exercise.",
   },
 ];
 
