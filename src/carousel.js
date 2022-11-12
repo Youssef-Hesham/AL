@@ -33,7 +33,7 @@ function Carousel({ items }) {
     <div>
       <CarouselProvider
         naturalSlideWidth={100}
-        naturalSlideHeight={30}
+        naturalSlideHeight={40}
         totalSlides={2}
         interval={7000}
         isPlaying={true}
@@ -51,10 +51,7 @@ function Carousel({ items }) {
                     src={items[0].src}
                     alt="product"
                   />
-                  <div className="slide-text">
-                    <h1>{items[0].text}</h1>
-                    <p>{items[0].description}</p>
-                  </div>
+                  <h1>ADInstruments</h1>
                 </div>
               </Slide>
               <Slide index={1}>
@@ -64,10 +61,7 @@ function Carousel({ items }) {
                     src={items[1].src}
                     alt="product"
                   />
-                  <div className="slide-text">
-                    <h1>{items[1].text}</h1>
-                    <p>{items[1].description}</p>
-                  </div>
+                  <h1>Diagnosys</h1>
                 </div>
               </Slide>
             </Slider>

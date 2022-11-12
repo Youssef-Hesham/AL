@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEnvelope,
+  faFax,
   faLocationDot,
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
@@ -11,7 +12,6 @@ import {
   faWhatsapp,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
-import images from "./Images";
 function Footer() {
   return (
     <footer>
@@ -21,7 +21,8 @@ function Footer() {
           <ul>
             <li>
               {" "}
-              <FontAwesomeIcon icon={faPhone} /> Phone: 3586230 , 01226127068{" "}
+              <FontAwesomeIcon icon={faPhone} /> Phone: (+202) 35862 630, (+202)
+              37826 355{" "}
             </li>
             <li>
               {" "}
@@ -30,11 +31,16 @@ function Footer() {
             </li>
             <li>
               {" "}
-              <FontAwesomeIcon icon={faLocationDot} /> Address:
+              <FontAwesomeIcon icon={faLocationDot} /> Address: Mohamed Refaie
+              St , Tareek Kafr Tohormos Faisal - Giza 12111, A.R Egypt
             </li>
             <li>
               {" "}
               <FontAwesomeIcon icon={faWhatsapp} /> WhatsApp: 01100538744
+            </li>
+            <li>
+              {" "}
+              <FontAwesomeIcon icon={faFax} /> Fax: (+202) 35866 544
             </li>
           </ul>
         </section>
@@ -47,15 +53,6 @@ function Footer() {
             <FontAwesomeIcon icon={faYoutube} />
           </div>
         </section>
-      </div>
-
-      <div className="partners">
-        <h2>Partners</h2>
-        <div className="partner-logos">
-          <img src={images[4].src} alt="logo" />
-          <img src={images[5].src} alt="logo" />
-          <img src={images[6].src} alt="logo" />
-        </div>
       </div>
     </footer>
   );
