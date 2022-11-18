@@ -1,10 +1,9 @@
-function Card(item) {
+function Card({ item }) {
   return (
-    <div>
-      <image src={item.image} />
+    <a className="card" href={item.url}>
+      <img src={item.src} alt="client 1" />
       <h3>{item.title}</h3>
-      <p>{item.discribtion}</p>
-    </div>
+    </a>
   );
 }
 export default Card;

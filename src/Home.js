@@ -1,5 +1,5 @@
 import Carousel from "./carousel";
-import { carouselImages, Cards } from "./Images";
+import { carouselImages, cards } from "./Images";
 import Card from "./Card";
 function Home() {
   return (
@@ -10,9 +10,12 @@ function Home() {
         <p></p>
       </section>
       <section>
-        {Cards.map((card) => {
-          return <Card item={card} />;
-        })}
+        <h2>People Who Trust Us </h2>
+        <div className="card-container">
+          {cards.map((card) => {
+            return <Card item={card} />;
+          })}
+        </div>
       </section>
     </div>
   );

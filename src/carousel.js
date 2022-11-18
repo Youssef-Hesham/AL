@@ -1,5 +1,6 @@
 import { useState } from "react";
 import React from "react";
+
 import {
   CarouselProvider,
   Slider,
@@ -43,35 +44,35 @@ function Carousel({ items }) {
       >
         <div>
           <div className="main-carousel">
-            <Slider>
-              <Slide index={0}>
-                <div className="slide">
-                  <img
-                    className="carouselImg"
-                    src={items[0].src}
-                    alt="product"
-                  />
-                  <h1>ADInstruments</h1>
-                </div>
-              </Slide>
-              <Slide index={1}>
-                <div className="slide">
-                  <img
-                    className="carouselImg"
-                    src={items[1].src}
-                    alt="product"
-                  />
-                  <h1>Diagnosys</h1>
-                </div>
-              </Slide>
-            </Slider>
+            <div className="slider">
+              <ButtonBack className="carousel-btn back">{"<"}</ButtonBack>
+              <ButtonNext className="carousel-btn next">{">"}</ButtonNext>
+              <Slider>
+                <Slide index={0}>
+                  <div className="slide">
+                    <img
+                      className="carouselImg"
+                      src={items[0].src}
+                      alt="product"
+                    />
+                    <h1>ADInstruments</h1>
+                  </div>
+                </Slide>
+                <Slide index={1}>
+                  <div className="slide">
+                    <img
+                      className="carouselImg"
+                      src={items[1].src}
+                      alt="product"
+                    />
+                    <h1>Diagnosys</h1>
+                  </div>
+                </Slide>
+              </Slider>
+            </div>
           </div>
         </div>
-        <div className="carousel-btns">
-          <ButtonBack className="carousel-btn">{"<"}</ButtonBack>
-          <DotGroup className="dotgroup" />
-          <ButtonNext className="carousel-btn">{">"}</ButtonNext>
-        </div>
+        <DotGroup className="dotgroup" />
       </CarouselProvider>
       <div className="phone-slide">
         <img className="carouselImg" src={items[itemIndex].src} alt="product" />
