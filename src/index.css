@@ -24,7 +24,7 @@ body {
   margin: 0px;
   flex-grow: inherit;
   list-style: none;
-  height: 105px;
+  height: 120px;
 }
 .nav-links {
   display: flex;
@@ -33,13 +33,14 @@ body {
 }
 
 .nav-btn {
+  font-size: large;
   display: flex;
   background-color: #175e86;
   margin: 0 10px 0px 10px;
   border: 0px;
   padding: 2px;
   text-decoration: none;
-  height: 70px;
+  height: 100px;
   width: 150px;
   align-items: center;
   justify-content: center;
@@ -150,7 +151,7 @@ body {
   text-decoration: none;
 }
 .nav-logo {
-  max-width: 50%;
+  max-width: 48%;
 }
 .nav-notActive {
   color: #e7f6f2;

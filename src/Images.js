@@ -1,7 +1,7 @@
 const images = [
   {
     index: 0,
-    src: "Images/Carousel-Images/866.jpg",
+    src: "s3://alsariefcompany/Images/Carousel-Images/866.jpg",
   },
   {
     index: 1,
@@ -71,7 +71,7 @@ export const cards = [
 export const partnersList = [
   {
     index: 0,
-    src: "Images/Carousel-Images/diagnosyslogo.png",
+    src: "s3://alsariefcompany/Images/Carousel-Images/866.jpg",
     title: "Daignosys",
     alt: "",
     url: "https://www.youtube.com/",

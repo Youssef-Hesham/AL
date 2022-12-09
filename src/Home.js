@@ -1,6 +1,7 @@
 import Carousel from "./carousel";
 import { carouselImages, cards } from "./Images";
 import Card from "./Card";
+import Clients from "./Cleints";
 function Home() {
   return (
     <div className="main">
@@ -10,12 +11,7 @@ function Home() {
         <p></p>
       </section>
       <section>
-        <h2>People Who Trust Us </h2>
-        <div className="card-container">
-          {cards.map((card) => {
-            return <Card item={card} />;
-          })}
-        </div>
+        <Clients />
       </section>
     </div>
   );
