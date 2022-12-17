@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const express = require("express");
+const cors = require("cors");
 const clients = require("./routes/clients");
 const carousle = require("./routes/carousle");
 const partners = require("./routes/partners");
@@ -12,6 +13,7 @@ mongoose
   .catch((err) => console.error("Could not connect to MongoDB..."));
 
 app.use(express.json());
+app.use(cors());
 app.use("/api/clients", clients);
 app.use("/api/carousele", carousle);
 app.use("/api/partners", partners);
