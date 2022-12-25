@@ -6,6 +6,7 @@ const clients = require("./routes/clients");
 const carousle = require("./routes/carousle");
 const partners = require("./routes/partners");
 const news = require("./routes/news");
+const user = require("./routes/user");
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use("/api/clients", clients);
 app.use("/api/carousele", carousle);
 app.use("/api/partners", partners);
 app.use("/api/news", news);
+app.use("/api/user", user);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));

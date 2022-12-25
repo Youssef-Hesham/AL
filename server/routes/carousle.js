@@ -1,66 +1,47 @@
-const { Carousle, validate } = require("../models/carousle");
+const { Carousle } = require("../models/carousle");
 const express = require("express");
 const router = express.Router();
+const multer = require("multer");
+const {
+  uploadFile,
+  deleteFile,
+  getObjectSignedUrl,
+} = require("../controller/s3");
+
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 router.get("/", async (req, res) => {
-  const carousele = await Carousle.find().sort("name");
-  res.send(carousele);
+  const carousle = await Carousle.find();
+
+  for (let post of carousle) {
+    post.src = await getObjectSignedUrl(post.src);
+  }
+  res.send(carousle);
 });
 
-router.post("/", async (req, res) => {
-  const { error } = validate(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+router.post("/", upload.single("image"), async (req, res) => {
+  const file = req.file;
+  const imageName = `${req.file.originalname}${Date.now()}`;
+  const fileBuffer = req.file.buffer;
 
-  let carousele = new Carousle({
-    src: req.body.src,
+  await uploadFile(fileBuffer, imageName, file.mimetype);
+
+  let carousle = new Carousle({
+    src: imageName,
     title: req.body.title,
+    discribtion: req.body.discribtion,
   });
-  carousele = await carousele.save();
+  carousle = await carousle.save();
 
-  res.send(carousele);
-});
-
-router.put("/:id", async (req, res) => {
-  const { error } = validate(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
-
-  const carousele = await Carousle.findByIdAndUpdate(
-    req.params.id,
-    {
-      src: req.body.src,
-      title: req.body.title,
-    },
-    { new: true }
-  );
-
-  if (!carousele)
-    return res
-      .status(404)
-      .send("The customer with the given ID was not found.");
-
-  res.send(carousele);
+  res.send(carousle);
 });
 
 router.delete("/:id", async (req, res) => {
-  const carousele = await Carousle.findByIdAndRemove(req.params.id);
-
-  if (!carousele)
-    return res
-      .status(404)
-      .send("The customer with the given ID was not found.");
-
-  res.send(carousele);
-});
-
-router.get("/:id", async (req, res) => {
-  const carousele = await Carousle.findById(req.params.id);
-
-  if (!Carousle)
-    return res
-      .status(404)
-      .send("The customer with the given ID was not found.");
-
-  res.send(carousele);
+  let carousle = await Carousle.findById(req.params.id);
+  await deleteFile(carousle.src);
+  carousle.remove();
+  res.send(carousle);
 });
 
 module.exports = router;

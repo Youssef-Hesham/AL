@@ -20,6 +20,7 @@ function Clients() {
 
     setClients(json.pets);
   }, []);
+
   return (
     <div>
       <CarouselProvider

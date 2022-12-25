@@ -1,4 +1,4 @@
-const { Client, validate } = require("../models/clients");
+const { Client } = require("../models/clients");
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
@@ -32,27 +32,6 @@ router.post("/", upload.single("image"), async (req, res) => {
     title: req.body.title,
   });
   client = await client.save();
-
-  res.send(client);
-});
-
-router.put("/:id", async (req, res) => {
-  const { error } = validate(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
-
-  const client = await Client.findByIdAndUpdate(
-    req.params.id,
-    {
-      src: req.body.src,
-      title: req.body.title,
-    },
-    { new: true }
-  );
-
-  if (!client)
-    return res
-      .status(404)
-      .send("The customer with the given ID was not found.");
 
   res.send(client);
 });
