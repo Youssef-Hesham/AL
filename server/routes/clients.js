@@ -1,18 +1,34 @@
 const { Client, validate } = require("../models/clients");
 const express = require("express");
 const router = express.Router();
+const multer = require("multer");
+const {
+  uploadFile,
+  deleteFile,
+  getObjectSignedUrl,
+} = require("../controller/s3");
+
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 router.get("/", async (req, res) => {
-  const client = await Client.find().sort("name");
-  res.send(client);
+  const clients = await Client.find();
+
+  for (let post of clients) {
+    post.src = await getObjectSignedUrl(post.src);
+  }
+  res.send(clients);
 });
 
-router.post("/", async (req, res) => {
-  const { error } = validate(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+router.post("/", upload.single("image"), async (req, res) => {
+  const file = req.file;
+  const imageName = `${req.file.originalname}${Date.now()}`;
+  const fileBuffer = req.file.buffer;
+
+  await uploadFile(fileBuffer, imageName, file.mimetype);
 
   let client = new Client({
-    src: req.body.src,
+    src: imageName,
     title: req.body.title,
   });
   client = await client.save();
@@ -42,24 +58,9 @@ router.put("/:id", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-  const client = await Client.findByIdAndRemove(req.params.id);
-
-  if (!client)
-    return res
-      .status(404)
-      .send("The customer with the given ID was not found.");
-
-  res.send(client);
-});
-
-router.get("/:id", async (req, res) => {
-  const client = await Client.findById(req.params.id);
-
-  if (!client)
-    return res
-      .status(404)
-      .send("The customer with the given ID was not found.");
-
+  let client = await Client.findById(req.params.id);
+  await deleteFile(client.src);
+  client.remove();
   res.send(client);
 });
 

@@ -1,16 +1,19 @@
 const mongoose = require("mongoose");
 const express = require("express");
 const cors = require("cors");
+require("dotenv").config({ path: "./config.env" });
 const clients = require("./routes/clients");
 const carousle = require("./routes/carousle");
 const partners = require("./routes/partners");
 const news = require("./routes/news");
+
 const app = express();
+
 mongoose.set("strictQuery", false);
 mongoose
-  .connect("mongodb://localhost/Al-Sharief")
+  .connect(process.env.MONGODB_URI)
   .then(() => console.log("Connected to MongoDB..."))
-  .catch((err) => console.error("Could not connect to MongoDB..."));
+  .catch((err) => console.error("Could not connect to MongoDB...", err));
 
 app.use(express.json());
 app.use(cors());
