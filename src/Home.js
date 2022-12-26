@@ -1,6 +1,5 @@
 import Carousel from "./carousel";
-import { carouselImages, cards } from "./Images";
-import Card from "./Card";
+import { carouselImages } from "./Images";
 import Clients from "./Cleints";
 function Home() {
   return (
