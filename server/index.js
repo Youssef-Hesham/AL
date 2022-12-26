@@ -19,7 +19,7 @@ mongoose
 app.use(express.json());
 app.use(cors());
 app.use("/api/clients", clients);
-app.use("/api/carousele", carousle);
+app.use("/api/carousle", carousle);
 app.use("/api/partners", partners);
 app.use("/api/news", news);
 app.use("/api/user", user);

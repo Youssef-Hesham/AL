@@ -7,13 +7,13 @@ const Client = mongoose.model(
     src: {
       type: String,
       required: true,
-      minlength: 5,
+      minlength: 1,
       maxlength: 255,
     },
     title: {
       type: String,
       required: true,
-      minlength: 5,
+      minlength: 1,
       maxlength: 50,
     },
   })
@@ -21,8 +21,8 @@ const Client = mongoose.model(
 
 function validateClient(client) {
   const schema = {
-    src: Joi.string().min(5).max(255).required(),
-    title: Joi.string().min(5).max(50).required(),
+    src: Joi.string().min(1).max(255).required(),
+    title: Joi.string().min(1).max(50).required(),
   };
 
   return Joi.validate(client, schema);

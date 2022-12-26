@@ -7,8 +7,8 @@ const password = process.env.PASSWORD;
 
 function validateUser(user) {
   const schema = {
-    username: Joi.string().min(5).max(50).required(),
-    password: Joi.string().min(5).max(255).required(),
+    username: Joi.string().min(1).max(50).required(),
+    password: Joi.string().min(1).max(255).required(),
   };
 
   return Joi.validate(user, schema);

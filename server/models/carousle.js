@@ -7,19 +7,19 @@ const Carousle = mongoose.model(
     src: {
       type: String,
       required: true,
-      minlength: 5,
+      minlength: 1,
       maxlength: 255,
     },
     title: {
       type: String,
       required: true,
-      minlength: 5,
-      maxlength: 50,
+      minlength: 1,
+      maxlength: 255,
     },
     discribtion: {
       type: String,
       required: true,
-      minlength: 5,
+      minlength: 1,
       maxlength: 1024,
     },
   })
@@ -27,9 +27,9 @@ const Carousle = mongoose.model(
 
 function validateCustomer(carousle) {
   const schema = {
-    src: Joi.string().min(5).max(255).required(),
-    title: Joi.string().min(5).max(50).required(),
-    discribtion: Joi.string().min(5).max(1024).required(),
+    src: Joi.string().min(1).max(255).required(),
+    title: Joi.string().min(1).max(255).required(),
+    discribtion: Joi.string().min(1).max(1024).required(),
   };
 
   return Joi.validate(carousle, schema);

@@ -1,4 +1,4 @@
-const { Carousle } = require("../models/carousle");
+const { Carousle, validate } = require("../models/carousle");
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
@@ -21,6 +21,9 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", upload.single("image"), async (req, res) => {
+  const { error } = validate(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
+
   const file = req.file;
   const imageName = `${req.file.originalname}${Date.now()}`;
   const fileBuffer = req.file.buffer;
@@ -30,7 +33,7 @@ router.post("/", upload.single("image"), async (req, res) => {
   let carousle = new Carousle({
     src: imageName,
     title: req.body.title,
-    discribtion: req.body.discribtion,
+    discribtion: req.body.discription,
   });
   carousle = await carousle.save();
 
@@ -39,6 +42,10 @@ router.post("/", upload.single("image"), async (req, res) => {
 
 router.delete("/:id", async (req, res) => {
   let carousle = await Carousle.findById(req.params.id);
+
+  if (!carousle)
+    return res.status(404).send("The genre with the given ID was not found.");
+
   await deleteFile(carousle.src);
   carousle.remove();
   res.send(carousle);

@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import React from "react";
-
 import {
   CarouselProvider,
   Slider,
@@ -35,7 +34,7 @@ function Carousel({ items }) {
       <CarouselProvider
         naturalSlideWidth={100}
         naturalSlideHeight={40}
-        totalSlides={2}
+        totalSlides={items.length}
         interval={7000}
         isPlaying={true}
         hasMasterSpinner={false}

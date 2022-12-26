@@ -3,17 +3,69 @@ import axios from "axios";
 
 export function Admin() {
   const [file, setFile] = useState();
-  const [caption, setCaption] = useState("");
+  const [title, setTitle] = useState("");
+  const [discription, setDiscription] = useState("");
+  const [sginedIn, setSign] = useState(false);
+  const [errMsg, setErrMsg] = useState("");
+  const [user, setUser] = useState("");
+  const [password, setPassword] = useState("");
+  const [selection, setSelection] = useState(null);
+  const [list, setList] = useState([]);
 
   const submit = async (event) => {
     event.preventDefault();
 
     const formData = new FormData();
     formData.append("image", file);
-    formData.append("title", caption);
-    await axios.post("http://localhost:3000/api/clients", formData, {
-      headers: { "Content-Type": "multipart/form-data" },
-    });
+    formData.append("title", title);
+    formData.append("discription", discription);
+    try {
+      await axios.post(`http://localhost:3000/api/${selection}`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+    } catch (err) {
+      if (!err?.response) {
+        setErrMsg("No Server Response");
+      } else if (err.response?.status === 400) {
+        setErrMsg("Missing Username or Password");
+      } else {
+        setErrMsg("Login Failed");
+      }
+    }
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const res = await axios.post("http://localhost:3000/api/user", {
+        username: user,
+        password: password,
+      });
+      if (res) {
+        setSign(true);
+      }
+    } catch (err) {
+      if (!err?.response) {
+        setErrMsg("No Server Response");
+      } else if (err.response?.status === 400) {
+        setErrMsg("Missing Username or Password");
+      } else {
+        setErrMsg("Login Failed");
+      }
+    }
+  };
+
+  const onSelection = async (value) => {
+    try {
+      let res = await fetch(`http://localhost:3000/api/${value}`);
+      let json = await res.json();
+      setList(json);
+      console.log(list);
+    } catch (err) {
+      if (!err?.response) {
+        setErrMsg("No Server Response");
+      } else console.error(err);
+    }
   };
 
   const fileSelected = (event) => {
@@ -22,30 +74,106 @@ export function Admin() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      <form
-        onSubmit={submit}
-        style={{ width: 650 }}
-        className="flex flex-col space-y-5 px-5 py-14"
-      >
-        <input onChange={fileSelected} type="file" accept="image/*"></input>
-        <input
-          value={caption}
-          onChange={(e) => setCaption(e.target.value)}
-          type="text"
-          placeholder="Caption"
-        ></input>
-        <button type="submit">Submit</button>
-      </form>
-      <button
-        onClick={async () => {
-          await axios.delete(
-            "http://localhost:3000/api/clients/63a520c14de8a9dd579cce33"
-          );
-        }}
-      >
-        delete
-      </button>
-    </div>
+    <>
+      {!sginedIn ? (
+        <section>
+          <p className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">
+            {errMsg}
+          </p>
+          <h1>Sign In</h1>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="username">Username:</label>
+            <input
+              type="text"
+              id="username"
+              autoComplete="off"
+              onChange={(e) => setUser(e.target.value)}
+              value={user}
+              required
+            />
+
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+              required
+            />
+            <button>Sign In</button>
+          </form>
+        </section>
+      ) : (
+        <>
+          <section>
+            <label>Choose what to change :</label>
+            <select
+              name="data"
+              id="data"
+              onChange={async (event) => {
+                setSelection(event.target.value);
+                await onSelection(event.target.value);
+              }}
+            >
+              <option value={null}>...</option>
+              <option value="carousle">home page slider</option>
+              <option value="partners">Partners</option>
+              <option value="clients">Clients</option>
+              <option value="news">News</option>
+            </select>
+          </section>
+          <section className="flex flex-col items-center justify-center">
+            <form
+              onSubmit={submit}
+              style={{ width: 650 }}
+              className="flex flex-col space-y-5 px-5 py-14"
+            >
+              <h1>to add</h1>
+              <input
+                onChange={fileSelected}
+                type="file"
+                accept="image/*"
+              ></input>
+              <input
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                type="text"
+                placeholder="title"
+              ></input>
+              <input
+                value={discription}
+                onChange={(e) => setDiscription(e.target.value)}
+                type="text"
+                placeholder="discription"
+              ></input>
+              <button type="submit">Submit</button>
+            </form>
+            <section>
+              <h2> list</h2>
+              <div>
+                {list.map((item) => {
+                  return (
+                    <div>
+                      <h2>{item.title}</h2>
+                      {item.discription ? <p>{item.discription}</p> : <></>}
+                      <p>image link:{item.src}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+            <button
+              onClick={async () => {
+                await axios.delete(
+                  "http://localhost:3000/api/clients/63a520c14de8a9dd579cce33"
+                );
+              }}
+            >
+              delete
+            </button>
+          </section>
+        </>
+      )}
+    </>
   );
 }

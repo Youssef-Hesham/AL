@@ -1,4 +1,4 @@
-const { News } = require("../models/news");
+const { News, validate } = require("../models/news");
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
@@ -30,7 +30,7 @@ router.post("/", upload.single("image"), async (req, res) => {
   let news = new News({
     src: imageName,
     title: req.body.title,
-    discribtion: req.body.discribtion,
+    discribtion: req.body.discription,
   });
   news = await news.save();
 
