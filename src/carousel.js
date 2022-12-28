@@ -17,7 +17,7 @@ function Carousel() {
 
   async function getImages() {
     const res = await fetch(
-      "https://al-sharief-server.onrender.com/api/carousle"
+      "https://al-sharief-server-akqk.onrender.com/api/carousle"
     );
     const json = await res.json();
     setCarouselImages(json);

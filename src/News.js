@@ -5,7 +5,9 @@ function News() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   async function getImages() {
-    const res = await fetch("https://al-sharief-server.onrender.com/api/news");
+    const res = await fetch(
+      "https://al-sharief-server-akqk.onrender.com/api/news"
+    );
     const json = await res.json();
     setPartnerList(json);
     setIsLoaded(true);

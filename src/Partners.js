@@ -7,7 +7,7 @@ function Partners() {
 
   async function getImages() {
     const res = await fetch(
-      "https://al-sharief-server.onrender.com/api/partners"
+      "https://al-sharief-server-akqk.onrender.com/api/partners"
     );
     const json = await res.json();
     setPartnerList(json);

@@ -21,7 +21,7 @@ export function Admin() {
     formData.append("discription", discription);
     try {
       await axios.post(
-        `https://al-sharief-server.onrender.com/api/${selection}`,
+        `https://al-sharief-server-akqk.onrender.com/api/${selection}`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
@@ -43,7 +43,7 @@ export function Admin() {
     event.preventDefault();
     try {
       const res = await axios.post(
-        "https://al-sharief-server.onrender.com/api/user",
+        "https://al-sharief-server-akqk.onrender.com/api/user",
         {
           username: user,
           password: password,
@@ -66,7 +66,7 @@ export function Admin() {
   const onSelection = async (value) => {
     try {
       let res = await fetch(
-        `https://al-sharief-server.onrender.com/api/${value}`
+        `https://al-sharief-server-akqk.onrender.com/api/${value}`
       );
       let json = await res.json();
       setList(json);
@@ -186,7 +186,7 @@ export function Admin() {
                       <button
                         onClick={async () => {
                           await axios.delete(
-                            `https://al-sharief-server.onrender.com/api/${selection}/${item._id}`
+                            `https://al-sharief-server-akqk.onrender.com/api/${selection}/${item._id}`
                           );
                           await onSelection(selection);
                         }}

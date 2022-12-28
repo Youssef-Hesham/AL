@@ -16,7 +16,7 @@ function Clients() {
 
   async function getImages() {
     const res = await fetch(
-      "https://al-sharief-server.onrender.com/api/clients"
+      "https://al-sharief-server-akqk.onrender.com/api/clients"
     );
     const json = await res.json();
     setPartnerList(json);
