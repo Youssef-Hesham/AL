@@ -20,9 +20,14 @@ export function Admin() {
     formData.append("title", title);
     formData.append("discription", discription);
     try {
-      await axios.post(`http://localhost:3000/api/${selection}`, formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      await axios.post(
+        `https://al-sharief-server.onrender.com/api/${selection}`,
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
+      await onSelection(selection);
     } catch (err) {
       if (!err?.response) {
         setErrMsg("No Server Response");
@@ -37,10 +42,13 @@ export function Admin() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const res = await axios.post("http://localhost:3000/api/user", {
-        username: user,
-        password: password,
-      });
+      const res = await axios.post(
+        "https://al-sharief-server.onrender.com/api/user",
+        {
+          username: user,
+          password: password,
+        }
+      );
       if (res) {
         setSign(true);
       }
@@ -57,7 +65,9 @@ export function Admin() {
 
   const onSelection = async (value) => {
     try {
-      let res = await fetch(`http://localhost:3000/api/${value}`);
+      let res = await fetch(
+        `https://al-sharief-server.onrender.com/api/${value}`
+      );
       let json = await res.json();
       setList(json);
       console.log(list);
@@ -140,12 +150,24 @@ export function Admin() {
                 type="text"
                 placeholder="title"
               ></input>
-              <input
-                value={discription}
-                onChange={(e) => setDiscription(e.target.value)}
-                type="text"
-                placeholder="discription"
-              ></input>
+              {selection === "clients" ? (
+                <></>
+              ) : selection === "partners" ? (
+                <input
+                  value={discription}
+                  onChange={(e) => setDiscription(e.target.value)}
+                  type="text"
+                  placeholder="url"
+                ></input>
+              ) : (
+                <input
+                  value={discription}
+                  onChange={(e) => setDiscription(e.target.value)}
+                  type="text"
+                  placeholder="discription"
+                ></input>
+              )}
+
               <button type="submit">Submit</button>
             </form>
             <section>
@@ -156,21 +178,26 @@ export function Admin() {
                     <div>
                       <h2>{item.title}</h2>
                       {item.discription ? <p>{item.discription}</p> : <></>}
-                      <p>image link:{item.src}</p>
+                      {item.url ? <p>{item.url}</p> : <></>}
+                      <h3>image link:</h3>
+                      <p>
+                        <a>{item.src}</a>
+                      </p>
+                      <button
+                        onClick={async () => {
+                          await axios.delete(
+                            `https://al-sharief-server.onrender.com/api/${selection}/${item._id}`
+                          );
+                          await onSelection(selection);
+                        }}
+                      >
+                        delete
+                      </button>
                     </div>
                   );
                 })}
               </div>
             </section>
-            <button
-              onClick={async () => {
-                await axios.delete(
-                  "http://localhost:3000/api/clients/63a520c14de8a9dd579cce33"
-                );
-              }}
-            >
-              delete
-            </button>
           </section>
         </>
       )}

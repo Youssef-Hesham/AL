@@ -16,7 +16,7 @@ const Partner = mongoose.model(
       minlength: 1,
       maxlength: 50,
     },
-    URL: {
+    discription: {
       type: String,
       required: true,
       minlength: 1,
@@ -29,7 +29,7 @@ function validateCustomer(partner) {
   const schema = {
     src: Joi.string().min(1).max(255).required(),
     title: Joi.string().min(1).max(50).required(),
-    URL: Joi.string().min(1).max(1024).required(),
+    discription: Joi.string().min(1).max(1024).required(),
   };
 
   return Joi.validate(partner, schema);

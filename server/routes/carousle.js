@@ -1,4 +1,4 @@
-const { Carousle, validate } = require("../models/carousle");
+const { Carousle } = require("../models/carousle");
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
@@ -21,9 +21,6 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", upload.single("image"), async (req, res) => {
-  const { error } = validate(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
-
   const file = req.file;
   const imageName = `${req.file.originalname}${Date.now()}`;
   const fileBuffer = req.file.buffer;

@@ -46,7 +46,7 @@ function Navbr() {
             <Link to="/about" className="submenu-item">
               About
             </Link>
-            <Link to="/contact" className="submenu-item">
+            <Link to="/news" className="submenu-item">
               News
             </Link>
             <Link to="/contact" className="submenu-item">
@@ -87,7 +87,7 @@ function Navbr() {
               className={({ isActive }) =>
                 isActive ? activeClassName : notrActiveClassName
               }
-              to="/about"
+              to="/news"
             >
               <FontAwesomeIcon icon={faNewspaper} /> News
             </NavLink>{" "}

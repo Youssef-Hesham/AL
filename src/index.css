@@ -201,19 +201,23 @@ body {
 }
 
 .carousel-btn {
+  opacity: 30%;
   position: absolute;
   font-size: 3rem;
   border: 0;
-  background-color: black;
-  color: #82cacc;
+  background-color: gray;
+  color: black;
   border-radius: 30%;
   z-index: 2;
 }
+.carousel-btn:hover {
+  opacity: 70%;
+}
 .back {
-  transform: translatey(225px) translateX(-600px);
+  transform: translatey(225px) translateX(-700px);
 }
 .next {
-  transform: translatey(225px) translateX(550px);
+  transform: translatey(225px) translateX(600px);
 }
 
 .carouselCard {
@@ -343,6 +347,11 @@ footer {
   margin: 20px;
   width: 700px;
   height: 500px;
+}
+/*clients*/
+.client-img {
+  max-width: 200px;
+  max-height: 200px;
 }
 @media only screen and (max-width: 1270px) {
   .navbar {

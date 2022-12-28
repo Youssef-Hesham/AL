@@ -1,4 +1,13 @@
+import Clients from "./Cleints";
+
 function About() {
-  return <p>About</p>;
+  return (
+    <>
+      <h1>About us </h1>;
+      <section>
+        <Clients />
+      </section>
+    </>
+  );
 }
 export default About;

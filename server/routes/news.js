@@ -1,4 +1,4 @@
-const { News, validate } = require("../models/news");
+const { News } = require("../models/news");
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");

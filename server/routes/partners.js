@@ -1,4 +1,4 @@
-const { Partner, validate } = require("../models/partners");
+const { Partner } = require("../models/partners");
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
@@ -30,7 +30,7 @@ router.post("/", upload.single("image"), async (req, res) => {
   let partner = new Partner({
     src: imageName,
     title: req.body.title,
-    discribtion: req.body.discription,
+    discription: req.body.discription,
   });
   partner = await partner.save();
 
