@@ -32,7 +32,7 @@ function Clients() {
         <div>
           <CarouselProvider
             naturalSlideWidth={20}
-            naturalSlideHeight={80}
+            naturalSlideHeight={40}
             totalSlides={partnersList.length}
             interval={7000}
             isPlaying={true}

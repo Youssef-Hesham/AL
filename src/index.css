@@ -20,7 +20,6 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-
   margin: 0px;
   flex-grow: inherit;
   list-style: none;
@@ -54,7 +53,7 @@ body {
 .nav-btn a:hover {
   cursor: pointer;
   opacity: 70%;
-  color: #395b64;
+  color: #f1f4f5;
   transition: color 0.5s ease;
 }
 
@@ -352,6 +351,32 @@ footer {
 .client-img {
   max-width: 200px;
   max-height: 200px;
+}
+/*newss*/
+.main-container {
+  padding-left: 30px;
+  padding-right: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.news-container {
+  display: flex;
+  padding: 20px;
+  border: solid 1px #395b64;
+  width: 1500px;
+  border-radius: 5%;
+}
+.news-img {
+  max-width: 200px;
+  max-height: 200px;
+  border-image: round;
+  padding-right: 20px;
+}
+.text-container {
+  display: flex;
+  flex-direction: column;
 }
 @media only screen and (max-width: 1270px) {
   .navbar {

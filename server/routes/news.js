@@ -30,7 +30,7 @@ router.post("/", upload.single("image"), async (req, res) => {
   let news = new News({
     src: imageName,
     title: req.body.title,
-    discribtion: req.body.discription,
+    discription: req.body.discription,
   });
   news = await news.save();
 

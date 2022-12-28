@@ -18,13 +18,13 @@ function News() {
     <>
       {isLoaded ? (
         <div>
-          <h2>Our Partners</h2>
-          <div className="card-container">
+          <h2>News</h2>
+          <div className="main-container">
             {partnersList.map((post) => {
               return (
-                <div>
-                  <image src={post.src} />
-                  <div>
+                <div className="news-container">
+                  <img className="news-img" src={post.src} alt="news 1" />
+                  <div className="text-container">
                     <h2>{post.title}</h2>
                     <p>{post.discription}</p>
                   </div>
