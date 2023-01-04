@@ -17,7 +17,7 @@ function News() {
   }, []);
 
   return (
-    <>
+    <div className="body-main-div">
       {isLoaded ? (
         <div>
           <h2>News</h2>
@@ -38,7 +38,7 @@ function News() {
       ) : (
         <></>
       )}
-    </>
+    </div>
   );
 }
 export default News;

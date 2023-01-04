@@ -5,12 +5,11 @@ import {
   Slide,
   ButtonBack,
   ButtonNext,
-  DotGroup,
 } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
-import axios from "axios";
 
 function Clients() {
+  const [itemIndex, updateItemIndex] = useState(0);
   const [partnersList, setPartnerList] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -26,8 +25,23 @@ function Clients() {
     getImages();
   }, []);
 
+  function nextItem() {
+    if (itemIndex === partnersList.length - 1) {
+      updateItemIndex(0);
+    } else {
+      updateItemIndex(itemIndex + 1);
+    }
+  }
+
+  function prevItem() {
+    if (itemIndex === 0) {
+      updateItemIndex(partnersList.length - 1);
+    } else {
+      updateItemIndex(itemIndex - 1);
+    }
+  }
   return (
-    <>
+    <div className="body-main-div">
       {isLoaded ? (
         <div>
           <CarouselProvider
@@ -38,16 +52,16 @@ function Clients() {
             isPlaying={true}
             hasMasterSpinner={false}
             visibleSlides={5}
-            className="carousel"
+            className="carousel clients-phone-carousle "
           >
-            <h2>Our Partners</h2>
+            <h2>Our Clients</h2>
             <ButtonBack className="carousel-btn back">{"<"}</ButtonBack>
             <ButtonNext className="carousel-btn next">{">"}</ButtonNext>
-            <Slider>
+            <Slider className="clients-phone-carousle">
               <div className="">
                 {partnersList.map((partner) => {
                   return (
-                    <Slide>
+                    <Slide className="client-slide">
                       <a className="client-img" href={partner.url}>
                         <img src={partner.src} alt="client 1" />
                         <h3>{partner.title}</h3>
@@ -58,11 +72,29 @@ function Clients() {
               </div>
             </Slider>
           </CarouselProvider>
+          <div className="phone-slide">
+            <img
+              className="carouselImg"
+              src={partnersList[itemIndex].src}
+              alt="product"
+            />
+            <div className="slide-text">
+              <h1>{partnersList[itemIndex].text}</h1>
+            </div>
+            <div>
+              <button className="carouselButton" onClick={prevItem}>
+                {"<"}
+              </button>
+              <button className="carouselButton" onClick={nextItem}>
+                {">"}
+              </button>
+            </div>
+          </div>
         </div>
       ) : (
         <></>
       )}
-    </>
+    </div>
   );
 }
 export default Clients;

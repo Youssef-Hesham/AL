@@ -10,7 +10,6 @@ import {
   faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import images from "./Images";
 
 function toggleVisibility() {
   var x = document.getElementById("PM");
@@ -28,8 +27,8 @@ function Navbr() {
     <nav>
       <ul className="navbar">
         <li className="logo-container">
-          <Link to="/" className="logo-container">
-            <img className="nav-logo" alt="logo" src={images[3].src} />
+          <Link to="/" className="logo-link">
+            <img className="nav-logo" alt="logo" src="images/logo.png" />
           </Link>
         </li>
         <li
@@ -49,7 +48,7 @@ function Navbr() {
             <Link to="/news" className="submenu-item">
               News
             </Link>
-            <Link to="/contact" className="submenu-item">
+            <Link to="/partners" className="submenu-item">
               Partners
             </Link>
             <Link to="/products" className="submenu-item">
@@ -113,14 +112,23 @@ function Navbr() {
               <FontAwesomeIcon icon={faAngleDown} />
             </NavLink>{" "}
             <div className="submenu">
-              <Link to="/" className="submenu-item">
-                Circuit Testing
+              <Link to="/lifeScience" className="submenu-item">
+                Life Science
               </Link>
-              <Link to="/" className="submenu-item">
-                lab research
+              <Link to="/pcb" className="submenu-item">
+                PCB Testing
               </Link>
-              <Link to="/" className="submenu-item">
-                Others
+              <Link to="/restoration" className="submenu-item">
+                Restoration & Preservation
+              </Link>
+              <Link to="/enviromental" className="submenu-item">
+                Enviromental Equipment
+              </Link>
+              <Link to="/lab" className="submenu-item">
+                Laboratory Equipment
+              </Link>
+              <Link to="/Material" className="submenu-item">
+                Construction Matrial Testing
               </Link>
             </div>
           </li>

@@ -30,7 +30,7 @@ router.post("/", upload.single("image"), async (req, res) => {
   let partner = new Partner({
     src: imageName,
     title: req.body.title,
-    discription: req.body.discription,
+    link: req.body.link,
   });
   partner = await partner.save();
 

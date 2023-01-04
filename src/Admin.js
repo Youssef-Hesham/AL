@@ -5,6 +5,7 @@ export function Admin() {
   const [file, setFile] = useState();
   const [title, setTitle] = useState("");
   const [discription, setDiscription] = useState("");
+  const [link, setlink] = useState("");
   const [sginedIn, setSign] = useState(false);
   const [errMsg, setErrMsg] = useState("");
   const [user, setUser] = useState("");
@@ -19,6 +20,8 @@ export function Admin() {
     formData.append("image", file);
     formData.append("title", title);
     formData.append("discription", discription);
+    formData.append("link", link);
+
     try {
       await axios.post(
         `https://al-sharief-server-akqk.onrender.com/api/${selection}`,
@@ -84,7 +87,7 @@ export function Admin() {
   };
 
   return (
-    <>
+    <div className="body-main-div">
       {!sginedIn ? (
         <section>
           <p className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">
@@ -115,7 +118,7 @@ export function Admin() {
         </section>
       ) : (
         <>
-          <section>
+          <section className="selection">
             <label>Choose what to change :</label>
             <select
               name="data"
@@ -125,82 +128,142 @@ export function Admin() {
                 await onSelection(event.target.value);
               }}
             >
-              <option value={null}>...</option>
+              <option value={null} selected disabled hidden>
+                Select an Option
+              </option>
               <option value="carousle">home page slider</option>
               <option value="partners">Partners</option>
               <option value="clients">Clients</option>
               <option value="news">News</option>
+              <optgroup label="Products">
+                <option value="life">Life Science</option>
+                <option value="pcb">Pcb testing</option>
+                <option value="restoration">
+                  Restoration and Preservation
+                </option>
+                <option value="enviromental">Enviromental Equipment</option>
+                <option value="education">Educational experiments</option>
+                <option value="supplies">lab supplies</option>
+                <option value="material">Matrial testing</option>
+              </optgroup>
             </select>
           </section>
-          <section className="flex flex-col items-center justify-center">
-            <form
-              onSubmit={submit}
-              style={{ width: 650 }}
-              className="flex flex-col space-y-5 px-5 py-14"
-            >
-              <h1>to add</h1>
-              <input
-                onChange={fileSelected}
-                type="file"
-                accept="image/*"
-              ></input>
-              <input
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                type="text"
-                placeholder="title"
-              ></input>
-              {selection === "clients" ? (
-                <></>
-              ) : selection === "partners" ? (
-                <input
-                  value={discription}
-                  onChange={(e) => setDiscription(e.target.value)}
-                  type="text"
-                  placeholder="url"
-                ></input>
-              ) : (
-                <input
-                  value={discription}
-                  onChange={(e) => setDiscription(e.target.value)}
-                  type="text"
-                  placeholder="discription"
-                ></input>
-              )}
-
-              <button type="submit">Submit</button>
-            </form>
-            <section>
-              <h2> list</h2>
-              <div>
-                {list.map((item) => {
-                  return (
-                    <div>
-                      <h2>{item.title}</h2>
-                      {item.discription ? <p>{item.discription}</p> : <></>}
-                      {item.url ? <p>{item.url}</p> : <></>}
-                      <h3>image link:</h3>
-                      <p>
-                        <a>{item.src}</a>
-                      </p>
-                      <button
-                        onClick={async () => {
-                          await axios.delete(
-                            `https://al-sharief-server-akqk.onrender.com/api/${selection}/${item._id}`
-                          );
-                          await onSelection(selection);
-                        }}
-                      >
-                        delete
-                      </button>
+          {selection !== null ? (
+            <section className="sign-in">
+              <form
+                className="sign-in-form"
+                onSubmit={submit}
+                style={{ width: 650 }}
+              >
+                <div className="main-part">
+                  <h1>to add</h1>
+                  <div>
+                    <div className="sub-part">
+                      <label className="label" htmlFor="image">
+                        {" "}
+                        Image:
+                      </label>
+                      <input
+                        id="image"
+                        onChange={fileSelected}
+                        type="file"
+                        accept="image/*"
+                      ></input>
                     </div>
-                  );
-                })}
-              </div>
+                    <div className="sub-part">
+                      <label htmlFor="title" className="label">
+                        {" "}
+                        Title:
+                      </label>
+                      <input
+                        id="title"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        type="text"
+                        placeholder="title"
+                      ></input>
+                    </div>
+                    {selection === "carousle" ||
+                    selection === "partners" ||
+                    selection === "clients" ? (
+                      <></>
+                    ) : (
+                      <div className="sub-part">
+                        <label htmlFor="discription" className="label">
+                          {" "}
+                          Discription:
+                        </label>
+                        <textarea
+                          id="discription"
+                          value={discription}
+                          onChange={(e) => setDiscription(e.target.value)}
+                          placeholder="discription"
+                        ></textarea>
+                      </div>
+                    )}
+                    {selection === "clients" ||
+                    selection === "news" ||
+                    selection === "carousle" ? (
+                      <></>
+                    ) : (
+                      <div className="sub-part">
+                        <label htmlFor="link" className="label">
+                          {" "}
+                          Link:
+                        </label>
+                        <input
+                          id="link"
+                          value={link}
+                          onChange={(e) => setlink(e.target.value)}
+                          type="text"
+                          placeholder="url"
+                        ></input>
+                      </div>
+                    )}
+                  </div>
+                  <button className="sub-btn" type="submit">
+                    Submit
+                  </button>
+                </div>
+              </form>
+              <section>
+                <h2> list</h2>
+                <div>
+                  {list.map((item) => {
+                    return (
+                      <div className="item">
+                        <h2>{item.title}</h2>
+                        {item.discription ? (
+                          <p>Discription : {item.discription}</p>
+                        ) : (
+                          <></>
+                        )}
+                        {item.url ? <p>{item.url}</p> : <></>}
+                        <h3>image link:</h3>
+                        <p>
+                          <a href={item.src}>link</a>
+                        </p>
+                        <button
+                          onClick={async () => {
+                            await axios.delete(
+                              `https://al-sharief-server-akqk.onrender.com/api/${selection}/${item._id}`
+                            );
+                            await onSelection(selection);
+                          }}
+                        >
+                          delete
+                        </button>
+                      </div>
+                    );
+                  })}
+                </div>
+              </section>
             </section>
-          </section>
+          ) : (
+            <></>
+          )}
         </>
       )}
-    </>
+    </div>
   );
 }

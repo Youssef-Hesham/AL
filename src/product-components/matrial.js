@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
-import Card from "./Card";
+import ProductCard from "./productCards";
 
-function Partners() {
-  const [partnersList, setPartnerList] = useState([]);
+function Matrial() {
+  const [List, setList] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
   async function getImages() {
     const res = await fetch(
-      "https://al-sharief-server-akqk.onrender.com/api/partners"
+      "https://al-sharief-server-akqk.onrender.com/api/material"
     );
     const json = await res.json();
-    setPartnerList(json);
+    setList(json);
     setIsLoaded(true);
   }
   useEffect(() => {
@@ -21,10 +21,10 @@ function Partners() {
     <div className="body-main-div">
       {isLoaded ? (
         <div>
-          <h2>Our Partners</h2>
-          <div className="card-container">
-            {partnersList.map((partner) => {
-              return <Card item={partner} />;
+          <h2>Material Testing</h2>
+          <div>
+            {List.map((product) => {
+              return <ProductCard item={product} />;
             })}
           </div>
         </div>
@@ -34,4 +34,4 @@ function Partners() {
     </div>
   );
 }
-export default Partners;
+export default Matrial;

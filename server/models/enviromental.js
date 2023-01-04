@@ -1,8 +1,8 @@
 const Joi = require("joi");
 const mongoose = require("mongoose");
 
-const Partner = mongoose.model(
-  "Partner",
+const Enviromental = mongoose.model(
+  "Pcb",
   new mongoose.Schema({
     src: {
       type: String,
@@ -14,7 +14,13 @@ const Partner = mongoose.model(
       type: String,
       required: true,
       minlength: 1,
-      maxlength: 50,
+      maxlength: 255,
+    },
+    discription: {
+      type: String,
+      required: true,
+      minlength: 1,
+      maxlength: 1024,
     },
     link: {
       type: String,
@@ -25,15 +31,15 @@ const Partner = mongoose.model(
   })
 );
 
-function validateCustomer(partner) {
+function validate(enviromental) {
   const schema = {
     src: Joi.string().min(1).max(255).required(),
-    title: Joi.string().min(1).max(50).required(),
+    title: Joi.string().min(1).max(255).required(),
     discription: Joi.string().min(1).max(1024).required(),
   };
 
-  return Joi.validate(partner, schema);
+  return Joi.validate(enviromental, schema);
 }
 
-exports.Partner = Partner;
-exports.validate = validateCustomer;
+exports.Enviromental = Enviromental;
+exports.validate = validate;

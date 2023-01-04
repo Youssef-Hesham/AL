@@ -1,4 +1,4 @@
-const { Carousle } = require("../models/carousle");
+const { Life } = require("../models/life");
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
@@ -12,12 +12,12 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 router.get("/", async (req, res) => {
-  const carousle = await Carousle.find();
+  const life = await Life.find();
 
-  for (let post of carousle) {
+  for (let post of life) {
     post.src = await getObjectSignedUrl(post.src);
   }
-  res.send(carousle);
+  res.send(life);
 });
 
 router.post("/", upload.single("image"), async (req, res) => {
@@ -27,24 +27,22 @@ router.post("/", upload.single("image"), async (req, res) => {
 
   await uploadFile(fileBuffer, imageName, file.mimetype);
 
-  let carousle = new Carousle({
+  let life = new Life({
     src: imageName,
     title: req.body.title,
+    discription: req.body.discription,
+    link: req.body.link,
   });
-  carousle = await carousle.save();
+  life = await life.save();
 
-  res.send(carousle);
+  res.send(life);
 });
 
 router.delete("/:id", async (req, res) => {
-  let carousle = await Carousle.findById(req.params.id);
-
-  if (!carousle)
-    return res.status(404).send("The genre with the given ID was not found.");
-
-  await deleteFile(carousle.src);
-  carousle.remove();
-  res.send(carousle);
+  let life = await Life.findById(req.params.id);
+  await deleteFile(life.src);
+  life.remove();
+  res.send(life);
 });
 
 module.exports = router;

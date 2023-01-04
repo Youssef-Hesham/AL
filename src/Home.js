@@ -2,9 +2,9 @@ import Carousel from "./carousel";
 
 function Home() {
   return (
-    <div className="main">
+    <div>
       <Carousel />
-      <section>
+      <section className="main body-main-div">
         <h2>CEO's Quote</h2>
         <p></p>
       </section>
