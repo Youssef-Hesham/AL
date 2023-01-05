@@ -28,7 +28,7 @@ function Navbr() {
       <ul className="navbar">
         <li className="logo-container">
           <Link to="/" className="logo-link">
-            <img className="nav-logo" alt="logo" src="images/s.png" />
+            <img className="nav-logo" alt="logo" src="s.png" />
           </Link>
         </li>
         <li
