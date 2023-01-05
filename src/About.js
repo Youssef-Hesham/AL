@@ -2,8 +2,11 @@ import Clients from "./Cleints";
 
 function About() {
   return (
-    <div className="body-main-div">
+    <div>
       <h1>About us </h1>
+      <section>
+        <p></p>
+      </section>
       <section>
         <Clients />
       </section>

@@ -22,7 +22,7 @@ function Enviromental() {
       {isLoaded ? (
         <div>
           <h2>Enviromental Equipment</h2>
-          <div>
+          <div className="card-container">
             {List.map((product) => {
               return <ProductCard item={product} />;
             })}

@@ -13,7 +13,7 @@ function Contact() {
       <iframe
         className="map  ifram-phone"
         title="location"
-        src="https://maps.google.com/maps?width=709&amp;height=495&amp;hl=en&amp;q=giza%20cairo+(giza)&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+        src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=30.00698578981285,%2031.176146261430922+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
       ></iframe>
 
       <div className="contact-info contact-phone">

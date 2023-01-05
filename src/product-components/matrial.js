@@ -22,7 +22,7 @@ function Matrial() {
       {isLoaded ? (
         <div>
           <h2>Material Testing</h2>
-          <div>
+          <div className="card-container">
             {List.map((product) => {
               return <ProductCard item={product} />;
             })}

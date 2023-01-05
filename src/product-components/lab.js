@@ -30,7 +30,7 @@ function Lab() {
         <div>
           <section>
             <h2>Educational Expriments</h2>
-            <div className="">
+            <div className="card-container">
               {edList.map((product) => {
                 return <ProductCard item={product} />;
               })}
@@ -38,7 +38,7 @@ function Lab() {
           </section>
           <section>
             <h2>Lab Supplies </h2>
-            <div className="">
+            <div className="card-container">
               {suList.map((product) => {
                 return <ProductCard item={product} />;
               })}

@@ -22,7 +22,7 @@ function Pcb() {
       {isLoaded ? (
         <div>
           <h2>PCB's Testing Solutions</h2>
-          <div>
+          <div className="card-container">
             {List.map((product) => {
               return <ProductCard item={product} />;
             })}

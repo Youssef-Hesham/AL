@@ -22,7 +22,7 @@ function Restoration() {
       {isLoaded ? (
         <div>
           <h2>Restoration and Preservation</h2>
-          <div>
+          <div className="card-container">
             {List.map((product) => {
               return <ProductCard item={product} />;
             })}
